@@ -1,5 +1,8 @@
 use macroquad::prelude::*;
 
+const VERT_SHADER: &str = include_str!("vert.glsl");
+const FRAG_SHADER: &str = include_str!("frag.glsl");
+
 /// Entry point of the macroquad application.
 /// This function sets up the rendering context, loads a GLSL shader, and enters the main game loop.
 #[macroquad::main("mq minimal shader template")]
@@ -52,30 +55,3 @@ async fn main() {
         next_frame().await;
     }
 }
-
-/// A simple fragment shader written in GLSL ES 1.00 (used in WebGL and OpenGL ES 2.0).
-///
-/// This shader runs for every pixel in the rendered geometry and outputs a solid white color.
-/// `precision lowp float;` defines float precision (mandatory in WebGL).
-const FRAG_SHADER: &str = r#"#version 100
-precision lowp float;
-
-void main() {
-  gl_FragColor = vec4(1.);
-}
-"#;
-
-/// A basic vertex shader in GLSL ES 1.00 compatible syntax.
-///
-/// It transforms input geometry from object space into clip space using the `Model` and `Projection` matrices.
-/// Macroquad automatically provides these uniforms and vertex attributes.
-const VERT_SHADER: &str = "#version 100
-attribute vec3 position;
-
-uniform mat4 Model;
-uniform mat4 Projection;
-
-void main() {
-    gl_Position = Projection * Model * vec4(position, 1); 
-}
-";

@@ -1,0 +1,5 @@
+[workspace]
+members = [
+  "mq_shader_template",
+]
+resolver = "3"

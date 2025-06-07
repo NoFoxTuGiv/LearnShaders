@@ -2,6 +2,5 @@
 members = [
   "mq_shader_template",
   "fragment_shaders",
-  "sdf_demo",
 ]
 resolver = "3"

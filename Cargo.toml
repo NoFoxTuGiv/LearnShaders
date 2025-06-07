@@ -1,5 +1,6 @@
 [workspace]
 members = [
   "mq_shader_template",
+  "fragment_shaders",
 ]
 resolver = "3"
